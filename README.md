@@ -29,6 +29,6 @@ $ docker compose down
 
 To generate the protobuf files:
 ```
-$ mkdir lib/src/generated
+$ mkdir -p lib/src/generated
 $ protoc -I protos/ protos/users.proto --dart_out=grpc:lib/src/generated
 ```
