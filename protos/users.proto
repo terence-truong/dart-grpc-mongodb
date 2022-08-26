@@ -1,0 +1,90 @@
+syntax = "proto3";
+
+package iron;
+
+message User {
+  string user_id = 1;
+  string first_name = 2;
+  string last_name = 3;
+  string email = 4;
+  bytes image = 5;
+  bool is_disabled = 6;
+  int64 created_datetime = 7;
+  int64 modified_datetime = 8;
+  int64 disabled_datetime = 9;
+  string password = 10;
+  string address_line_1 = 11;
+  string address_line_2 = 12;
+  string city = 13;
+  string state = 14;
+  string zip_code = 15;
+  string phone_number = 16;
+}
+
+message CreateUserRequest {
+  User user = 1;
+}
+
+message CreateUserReply {
+  bool success = 1;
+  string user_id = 2;
+}
+
+message LoginUserRequest {
+  string login = 1;
+  string password = 2;
+}
+
+message LoginUserReply {
+  bool success = 1;
+  User user = 2;
+}
+
+message DisableUserRequest {
+  string user_id = 1;
+}
+
+message DisableUserReply {
+  bool success = 1;
+}
+
+message EnableUserRequest {
+  string user_id = 1;
+}
+
+message EnableUserReply {
+  bool success = 1;
+}
+
+message UpdateUserRequest {
+  User user = 1;
+}
+
+message UpdateUserReply {
+  bool success = 1;
+}
+
+message ReadUserRequest {
+  string user_id = 1;
+}
+
+message ReadUserReply {
+  User user = 1;
+}
+
+message ReadUsersRequest {
+  string business_id = 1;
+}
+
+message ReadUsersReply {
+  repeated User users = 1;
+}
+
+service UserService {
+  rpc CreateUser(CreateUserRequest) returns (CreateUserReply) {};
+  rpc LoginUser(LoginUserRequest) returns (LoginUserReply) {};
+  rpc ReadUser(ReadUserRequest) returns (ReadUserReply) {};
+  rpc ReadUsers(ReadUsersRequest) returns (ReadUsersReply) {};
+  rpc UpdateUser(UpdateUserRequest) returns (UpdateUserReply) {};
+  rpc DisableUser(DisableUserRequest) returns (DisableUserReply) {};
+  rpc EnableUser(EnableUserRequest) returns (EnableUserReply) {};}

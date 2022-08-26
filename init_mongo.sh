@@ -1,0 +1,1 @@
+mongosh --file /tmp/create_index.js
